@@ -28,6 +28,11 @@ pipeline{
     
     stage("Provision"){
       steps{
+        environment{
+          AWS_ACCESS_KEY_ID = credentials('access_id')
+          AWS_SECRET_ACCESS_KEY = credentials('secret_id')
+        }
+ 
         script{
           sh "terraform init"
           sh "terraform apply --auto-approve"
