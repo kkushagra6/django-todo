@@ -48,7 +48,7 @@ pipeline{
         script{
           sh "echo Server Deployment in progress"        
           sshagent(['server_ssh_key']){ 
-            sh "ssh -o StrictHostKeyChecking=no ec2-user@${EC2_PUBLIC_IP} bash cat /etc/os-release"
+            sh "ssh -o StrictHostKeyChecking=no ec2-user@${EC2_PUBLIC_IP} date"
           }   
         }
 
