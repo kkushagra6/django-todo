@@ -43,12 +43,19 @@ pipeline{
 
 
     stage("Deploy"){
-      steps{
+       environment{
+         DOCKER_CREDS = credentials('dockerhub')
+       }
+       steps{
    
         script{
-          sh "echo Server Deployment in progress"        
+          sh "echo Server Initialization in progress"        
+          sleep(time: 90, unit: "SECONDS")
+          sh "echo Docker Deployment Triggered"
+          def shellcmd = "bash ./cmds.sh ${BUILD_ID} ${DOCKER_CREDS_USR} ${DOCKER_CREDS_PSW}"
           sshagent(['server_ssh_key']){ 
-            sh "ssh -o StrictHostKeyChecking=no ec2-user@${EC2_PUBLIC_IP} date"
+            sh "scp -o StrictHostKeyChecking=no cmds.sh ec2-user@{EC2_PUBLIC_IP}:/home/ec2-user"
+            sh "ssh -o StrictHostKeyChecking=no ec2-user@${EC2_PUBLIC_IP} ${shellcmd}"
           }   
         }
 
