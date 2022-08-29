@@ -45,12 +45,9 @@ pipeline{
     stage("SSH_Deploy"){
       steps{
       script{
-            sh 'Deploying Container'
-
+            sh "Deploying Container"
             sshagent(['server_ssh_key']){
-              sh "uname -a"
-              
-              
+              sh "uname -a"  
             }
             
          }
