@@ -5,7 +5,7 @@ export DOCKER_USER=$2
 export DOCKER_PSWD=$3
 
 echo $DOCKER_PSWD | docker login -u $DOCKER_USER --password-stdin
-sudo docker run -d -p 8001:8001 kkushagra6/docker_todo:$BUILD_NAME
+sudo docker run -d -p 8001:8001 kkushagra6/docker_todo:v$BUILD_NAME
 echo "Successfull"
 
 
