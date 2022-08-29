@@ -38,8 +38,18 @@ pipeline{
           sh "terraform apply --auto-approve"
           EC2_PUBLIC_IP = sh(script: "terraform output ec2_public_ip", returnStdout: true).trim()
              }
-          }
-      
+          } 
+    }
+
+
+    stage("Deploy"){
+      steps{
+        script{
+          sh "Server Deployment in progress"        
+        }
+
+      }
+
     }
     
 
