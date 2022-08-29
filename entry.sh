@@ -1,7 +1,6 @@
 #!/bin/bash
-
 sudo yum update -y
-sudo yum install docker
+sudo yum install docker -y 
 sudo usermod -aG docker ec2user
-systemctl start docker
-
+sudo chmod 666 /var/run/docker.sock
+sudo systemctl start docker.service
