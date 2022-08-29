@@ -26,7 +26,7 @@ resource "aws_instance" "my_ec2" {
   ami =  data.aws_ami.ami_info.id
   instance_type  = "t2.micro" 
   vpc_security_group_ids = [aws_security_group.sg1.id]
-  key_name = "ec2"
+  key_name = "ec2-user"
   user_data = file("entry.sh")
 }
 
