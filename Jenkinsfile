@@ -46,13 +46,15 @@ pipeline{
       steps{
         script{
           sh "Server Deployment in progress"        
-        }
+          sshagent(['server_ssh_key']){
+            sh "ip"   
+              }
+           }
 
-      }
+     }
 
     }
-    
-
+   
   }  
 
 }
