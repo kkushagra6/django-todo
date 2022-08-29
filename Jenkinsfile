@@ -45,10 +45,7 @@ pipeline{
     stage("Deploy"){
       steps{
         script{
-          sh "Server Deployment in progress"        
-          sshagent(['server_ssh_key']){
-            sh "ip"   
-              }
+          sh "echo Server Deployment in progress"        
            }
 
      }
