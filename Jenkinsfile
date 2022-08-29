@@ -42,14 +42,6 @@ pipeline{
       
     }
     
-    stage("SSH_Deploy"){
-      steps{
-        script{
-            sh "Deploying Container"            
-         }
-       }
-    }
-
 
   }  
 
